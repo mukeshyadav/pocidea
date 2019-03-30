@@ -13,17 +13,29 @@ const StyledInfo = styled.div`
     margin-bottom: ${props => props.theme.margin.medium}
 `
 
+const StyledDetails = styled.span`
+  background-color: ${props => props.busy ? props.theme.color.red : props.theme.color.green}
+  color: ${props => props.theme.color.white}
+  padding: ${props => props.theme.padding.small}
+`
+
 export const InfoCard = (props) => {
+  const {origin, departure, detail=null } = props
+  const isBusy = detail && detail.busyness_index > 5 ? true : false
   return (
     <React.Fragment>
-      <TimeCard time='7:20' />
+      <TimeCard time={departure} />
       <StyledInfo {...props}>
         <Heading h3>
-          {props.title}
+          {origin.type === 'STREET_ADDRESS' ? `Pick up From:` : `${origin.value} Airport`}
         </Heading>
         <Heading p>
-          {props.content}
+          {origin.type === 'STREET_ADDRESS' ? origin.value : 'Terminal C'}
         </Heading>
+        {detail ?
+           <StyledDetails busy={isBusy}>
+             {isBusy ? ' Busy ' : ' Not Busy '}
+           </StyledDetails> : null}
       </StyledInfo>
     </React.Fragment>)
 }

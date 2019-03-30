@@ -13,7 +13,9 @@ export const Primary = {
     border: `#FFBD45`,
     dark: '#00008b',
     light: '#0080ff',
-    white: '#fff'
+    white: '#fff',
+    green: '#008000',
+    red: '#ff0000'
   },
   fontFamily: `Barlow, sans-serif`,
   fontSize: {
