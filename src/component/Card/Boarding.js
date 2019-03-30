@@ -17,6 +17,11 @@ const GridRow = styled.div`
     border-radius: ${props => props.top ?  `${props.theme.button.radius} ${props.theme.button.radius} 0 0` : `0 0 ${props.theme.button.radius} ${props.theme.button.radius}` }
 `
 
+const setTime = (val) => {
+  const newTime = new Date(val)
+  return `${newTime.getHours()}:${newTime.getMinutes()}`
+}
+
 export const BoardingCard = (props) => {
   const {origin, destination, departure, detail} = props
   return (
@@ -28,7 +33,7 @@ export const BoardingCard = (props) => {
             {detail.flight_number}
           </Heading>
           <Heading h3>
-            {detail.boarding}
+            {setTime(detail.boarding)}
           </Heading>
         </GridRow>
         <GridRow>

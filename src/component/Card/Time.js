@@ -10,10 +10,15 @@ export const StyledTime = styled.div`
     font-weight: ${props => props.theme.fontWeight.high}
 `
 
+const setTime = (val) => {
+  const newTime = new Date(val)
+  return `${newTime.getHours()}:${newTime.getMinutes()}`
+}
+
 export const TimeCard = props => {
   return (
     <StyledTime>
-      {props.time}
+      {setTime(props.time)}
     </StyledTime>
   )
 }
